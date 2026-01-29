@@ -3,6 +3,7 @@ export class PathNames {
     public static REGISTER = 'register';
     public static DASHBOARD = 'dashboard';
     public static MAIN = 'main';
+    public static FILES = 'files';
 }
 
 export class ServerUrls {
@@ -11,5 +12,9 @@ export class ServerUrls {
     // Auth
     public static REGISTER = `${ServerUrls.BASE_URL}/auth/register`;
     public static LOGIN = `${ServerUrls.BASE_URL}/auth/login`;
-    public static USER_DETAILS = `${ServerUrls.BASE_URL}/auth/user`;
+    public static USER_DETAILS = `${ServerUrls.BASE_URL}/auth/me`;
+
+    // Files
+    public static FILES = `${ServerUrls.BASE_URL}/docs`;
+    public static FILES_COUNT = `${ServerUrls.FILES}/count`;
 }

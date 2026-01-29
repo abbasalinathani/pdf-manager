@@ -35,6 +35,7 @@
     "@spartan-ng/brain": "^0.0.1-alpha.612",
     "@spartan-ng/ui-core": "^0.0.1-alpha.380",
     "@tailwindcss/postcss": "^4.1.18",
+    "@tanstack/angular-table": "^8.21.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "ngx-sonner": ">=3.0.0",

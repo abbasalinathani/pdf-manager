@@ -1,1 +1,59 @@
-<p>files works!</p>
+<div class="flex flex-col justify-between gap-4">
+    <input hlmInput class="w-full md:w-80" placeholder="Search" [value]="globalFilter()"
+        (input)="search$.next($event.target.value)" />
+
+    <div class="overflow-hidden rounded-md border">
+        @defer {
+        <div hlmTableContainer>
+            <table hlmTable>
+                <thead hlmTHead>
+                    @for(headerGroup of table.getHeaderGroups(); track headerGroup.id) {
+                    <tr hlmTr>
+                        @for (header of headerGroup.headers; track header.id) {
+                        <th hlmTh (click)="header.column.toggleSorting()">
+                            {{ header.column.columnDef.header }}
+                            @if(header.column.getCanSort()) {
+                            <span class="text-xs">
+                                @switch (header.column.getIsSorted()) {
+                                @case ('asc') {
+                                ▲
+                                }
+                                @case ('desc') {
+                                ▼
+                                }
+                                @default {
+                                ⇅
+
+                                }
+                                }
+                            </span>
+                            }
+                        </th>
+                        }
+                    </tr>
+                    }
+                </thead>
+                <tbody hlmTBody>
+                    @for (row of table.getRowModel().rows; track row.id) {
+                    <tr hlmTr>
+                        @for (cell of row.getVisibleCells(); track $index) {
+                        <td hlmTd>
+                            {{ cell.getValue() }}
+                        </td>
+                        }
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        }
+    </div>
+</div>
+<div class="flex gap-2 mt-4">
+    <button (click)="table.previousPage()" [disabled]="!table.getCanPreviousPage()">
+        Previous
+    </button>
+    <button (click)="table.nextPage()" [disabled]="!table.getCanNextPage()">
+        Next
+    </button>
+</div>
