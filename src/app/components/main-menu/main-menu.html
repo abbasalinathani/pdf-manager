@@ -1,2 +1,20 @@
-<p>main-menu works!</p>
-<router-outlet />
+<section class="container">
+    <section class="side-bar">
+        <div class="logo" (click)="redirectToDashboard()">LOGO</div>
+        <a [routerLink]="[PathNames.DASHBOARD]" class="nav-item">Dashboard</a>
+        <a [routerLink]="[PathNames.FILES]" class="nav-item">Files</a>
+    </section>
+    <section class="main-content">
+        <section class="top-bar">
+            <div></div><!-- Breadrumb will come here-->
+            <div class="user-details">
+                <div class="user-name">{{authService.currentUser?.firstName}} {{authService.currentUser?.lastName}}
+                </div>
+                <ng-icon hlm size="sm" name="lucideLogOut" class="logout-icon" (click)="logout()" />
+            </div>
+        </section>
+        <section class="content">
+            <router-outlet></router-outlet>
+        </section>
+    </section>
+</section>
