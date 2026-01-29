@@ -1,0 +1,22 @@
+.container {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    max-width: 100%;
+    display: block;
+    align-content: center;
+    justify-items: center;
+    background: darkgray;
+
+    .card {
+        justify-self: center;
+
+        .error-text {
+            color: red;
+        }
+    }
+
+    .login-link {
+        padding: 5px;
+    }
+}
