@@ -1,0 +1,64 @@
+<section class="container">
+    <section class="w-full max-w-sm card" hlmCard>
+        <div hlmCardHeader>
+            <h3 hlmCardTitle>Create an account</h3>
+            <p hlmCardDescription>Enter your email and password to create a new account</p>
+        </div>
+        <form [formGroup]="registerForm">
+            <div hlmCardContent>
+                <div class="flex flex-col gap-6">
+                    <div class="grid gap-2">
+                        <label hlmLabel for="firstName">First Name</label>
+                        <input type="text" id="firstName" placeholder="John" required hlmInput
+                            formControlName="firstName" />
+                    </div>
+
+                    <div class="grid gap-2">
+                        <label hlmLabel for="lastName">Last Name</label>
+                        <input type="text" id="lastName" placeholder="Doe" required hlmInput
+                            formControlName="lastName" />
+                    </div>
+
+                    <div class="grid gap-2">
+                        <label hlmLabel for="email">Email</label>
+                        <input type="email" id="email" placeholder="m@example.com" required hlmInput
+                            formControlName="email" />
+                    </div>
+
+                    <div class="grid gap-2">
+                        <div class="flex items-center">
+                            <label hlmLabel for="password">Password</label>
+                        </div>
+                        <input type="password" id="password" hlmInput formControlName="password" />
+                    </div>
+                    <div class="grid gap-2">
+                        <div class="flex items-center">
+                            <label hlmLabel for="confirmPassword">Confirm password</label>
+                        </div>
+                        <input type="password" id="confirmPassword" hlmInput formControlName="confirmPassword" />
+                        @if(registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched) {
+                        <div class="error-text">
+                            Passwords do not match
+                        </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div hlmCardFooter class="flex-col gap-2">
+            <button hlmBtn type="submit" class="w-full" [disabled]="registerForm.invalid || isLoading"
+                (click)="register()">
+                @if(isLoading) {
+                <hlm-spinner />
+                }
+                Sign up
+            </button>
+            <span>
+                Already have an account?
+                <button hlmBtn variant="link" class="login-link" (click)="navigateToLogin()">Login</button>
+            </span>
+
+        </div>
+    </section>
+</section>
